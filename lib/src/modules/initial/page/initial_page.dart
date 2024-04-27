@@ -14,8 +14,10 @@ class _ScreenInitialState extends State<ScreenInitial> {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    
+    //TODO: Verificar o tempo de loading se esta adequado
 
-    Future.delayed(Duration(seconds: 10), () {
+    Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (_) => const HomePage(title: "Fast Location"),
       ));

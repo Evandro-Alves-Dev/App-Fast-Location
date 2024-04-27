@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -12,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _counter = 0;
 
-   void _incrementCounter() {
+  void _incrementCounter() {
     setState(() {
       _counter++;
     });
@@ -22,23 +24,52 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _counter = 0;
     });
-}
+  }
 
-
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        centerTitle: true,       
-        leading:
-            IconButton(onPressed: () {}, icon: const Icon(Icons.check)),
-        
+        titleTextStyle: TextStyle(
+            color: Colors.green[600],
+            fontSize: 35,
+            fontWeight: FontWeight.bold,
+            height: 2.5),
+        centerTitle: true,
+        leading: IconButton(
+            onPressed: () {},
+            icon:
+                const Icon(Icons.check)), // verificar e colocar o incone certo
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(bottom: 40),
+                child: Icon(
+                  Icons.directions,
+                  color: Colors.green[600],
+                  size: 100,
+                )),
+            Container(
+                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),                
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      Expanded(
+                        child: Text(
+                          "Faça uma busca para localizar seu destino",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ])),
             Container(
               margin: const EdgeInsets.only(
                 left: 20,
@@ -47,7 +78,7 @@ class _HomePageState extends State<HomePage> {
               ),
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  color: Colors.blue,
+                  color: Color.fromARGB(255, 29, 168, 33),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
