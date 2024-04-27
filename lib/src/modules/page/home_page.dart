@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -24,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _counter = 0;
     });
-  }
+  }  
 
   @override
   Widget build(BuildContext context) {
@@ -47,76 +45,100 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-                padding: EdgeInsets.only(bottom: 40),
+                padding: const EdgeInsets.only(bottom: 40),
                 child: Icon(
                   Icons.directions,
                   color: Colors.green[600],
                   size: 100,
                 )),
             Container(
-                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),                
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
-                      Expanded(
-                        child: Text(
-                          "Faça uma busca para localizar seu destino",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
+              margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),
+              child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        "Faça uma busca para localizar seu destino",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                    ])),
-            Container(
-              margin: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-                bottom: 100,
-              ),
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  color: Color.fromARGB(255, 29, 168, 33),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      spreadRadius: 3,
-                      blurRadius: 10,
-                      offset: Offset(0, 1),
-                    )
+                    ),
                   ]),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.only(right: 5),
-                    child: Icon(
-                      Icons.access_alarm,
-                      color: Colors.white,
-                      size: 35,
-                    ),
+            ),
+            ElevatedButton(
+              onPressed: () => {},              
+              autofocus: true,
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.green[600]),
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(horizontal: 85, vertical: 10)),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  Text(
-                    "Encontro ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "02",
-                    style: TextStyle(
-                      color: Colors.black45,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
+                ),
+              ),
+              child: const Text(
+                "Localizar endereço",
+                style: TextStyle(                  
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
+
+            // Container(
+            //   margin: const EdgeInsets.only(
+            //     left: 20,
+            //     right: 20,
+            //     bottom: 100,
+            //   ),
+            //   decoration: const BoxDecoration(
+            //       borderRadius: BorderRadius.all(Radius.circular(12)),
+            //       color: Color.fromARGB(255, 29, 168, 33),
+            //       boxShadow: [
+            //         BoxShadow(
+            //           color: Colors.grey,
+            //           spreadRadius: 3,
+            //           blurRadius: 10,
+            //           offset: Offset(0, 1),
+            //         )
+            //       ]),
+            //   child: const Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       Padding(
+            //         padding: EdgeInsets.only(right: 5),
+            //         child: Icon(
+            //           Icons.access_alarm,
+            //           color: Colors.white,
+            //           size: 35,
+            //         ),
+            //       ),
+            //       Text(
+            //         "Encontro ",
+            //         style: TextStyle(
+            //           color: Colors.white,
+            //           fontSize: 40,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
+            //       Text(
+            //         "02",
+            //         style: TextStyle(
+            //           color: Colors.black45,
+            //           fontSize: 40,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Image.network(

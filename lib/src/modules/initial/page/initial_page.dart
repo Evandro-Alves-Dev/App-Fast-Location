@@ -17,7 +17,7 @@ class _ScreenInitialState extends State<ScreenInitial> {
     
     //TODO: Verificar o tempo de loading se esta adequado
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (_) => const HomePage(title: "Fast Location"),
       ));
@@ -35,10 +35,10 @@ class _ScreenInitialState extends State<ScreenInitial> {
             colors: [Color.fromARGB(255, 90, 5, 236), Color.fromARGB(255, 174, 208, 221)],
           ),
         ),     
-      child: Center(
+      child: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             Icon(Icons.location_on_outlined, size: 150, color: Colors.black),
             CircularProgressIndicator(color: Colors.white),
             SizedBox(
