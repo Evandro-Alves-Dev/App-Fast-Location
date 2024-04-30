@@ -39,95 +39,86 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         leading: IconButton(
             onPressed: () {},
-            icon:
-                const Icon(Icons.check)), // verificar e colocar o incone certo
+            icon: const Icon(Icons
+                .compare_arrows_sharp)), // verificar e colocar o incone certo
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-                padding: EdgeInsets.only(bottom: 40),
+            const Padding(
+                padding: EdgeInsets.only(),
                 child: Icon(
                   Icons.directions,
-                  color: Colors.green[600],
+                  color: Color.fromRGBO(67, 160, 71, 1),
                   size: 100,
                 )),
-            Container(
-                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),                
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
-                      Expanded(
-                        child: Text(
-                          "Faça uma busca para localizar seu destino",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+            const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: Text(
+                      "Faça uma busca para localizar seu destino",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ])),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ]),
             Container(
               margin: const EdgeInsets.only(
                 left: 20,
                 right: 20,
-                bottom: 100,
+                bottom: 10,
               ),
               decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  color: Color.fromARGB(255, 29, 168, 33),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  color: Color.fromRGBO(67, 160, 71, 1),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
                       spreadRadius: 3,
-                      blurRadius: 10,
+                      blurRadius: 4,
                       offset: Offset(0, 1),
                     )
                   ]),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.only(right: 5),
-                    child: Icon(
-                      Icons.access_alarm,
-                      color: Colors.white,
-                      size: 35,
-                    ),
+                children: [
+                  SizedBox(
+                    height: 45,
                   ),
                   Text(
-                    "Encontro ",
+                    "Localizar endereço ",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 40,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    "02",
-                    style: TextStyle(
-                      color: Colors.black45,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Image.network(
-                  "https://unisenaisc.com.br/wp-content/uploads/sites/12/2023/04/marca-1.png"),
-            ),
-            const Text(
-              'Quantidade de vezes que você clicou no botão:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            SizedBox(
+              height: 15,
+              child: Container(
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Ultimos endereços localizados',
+                      style: TextStyle(
+                        color: Color.fromRGBO(67, 160, 71, 1),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),
