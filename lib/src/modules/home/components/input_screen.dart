@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:fast_location/src/modules/home/components/search_address.dart';
 import 'package:fast_location/src/modules/home/model/address_model.dart';
+import 'package:fast_location/src/modules/home/page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -38,8 +39,8 @@ class _InputScreenState extends State<InputScreen> {
     if (cep.isEmpty || cep.length != 8) {
       setState(() {
         _address = 'O CEP não pode ser vazio e deve ter 8 dígitos';
-        _isLoading = false;  
-        throw Exception(_address);       
+        _isLoading = false;
+        throw Exception(_address);
       });
     } else {
       final url = 'https://viacep.com.br/ws/$cep/json/';
@@ -51,10 +52,10 @@ class _InputScreenState extends State<InputScreen> {
 
         if (data.containsKey('erro') && data['erro'] == true) {
           setState(() {
-             _isLoading = false; 
+            _isLoading = false;
             _address =
                 'Não foi possível encontrar o endereço para o CEP informado.';
-            throw Exception(_address); 
+            throw Exception(_address);
           });
         } else {
           setState(() {
@@ -63,7 +64,7 @@ class _InputScreenState extends State<InputScreen> {
         }
       } else {
         setState(() {
-           _isLoading = false; 
+          _isLoading = false;
           _address =
               'Não foi possível encontrar o endereço para o CEP informado.';
           throw Exception(_address);
@@ -99,17 +100,34 @@ class _InputScreenState extends State<InputScreen> {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   onPressed: () async {
-                    final addressModel = await _searchAddress(_cepController.text);
+                    final addressModel =
+                        await _searchAddress(_cepController.text);
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                SearchAddress(address: addressModel)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            SearchAddress(address: addressModel),
+                      ),
+                    );
                   },
                   child: _isLoading
                       ? CircularProgressIndicator()
                       : const Text('Buscar'),
                 )),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: ElevatedButton(
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(title: "Fast Location"),
+                    ),
+                  ),
+                },
+                child: const Text('Voltar'),
+              ),
+            ),
             Text(
               _address,
               style: const TextStyle(fontSize: 16.0),

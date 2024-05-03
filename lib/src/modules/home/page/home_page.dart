@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(        
+      appBar: AppBar(
         title: Text(widget.title),
         titleTextStyle: TextStyle(
             color: Colors.green[600],
@@ -26,11 +26,7 @@ class _HomePageState extends State<HomePage> {
             fontWeight: FontWeight.bold,
             height: 2.5),
         centerTitle: true,
-        leading: IconButton(
-            onPressed: () {},
-            icon:
-                const Icon(Icons.check)),
-               // verificar e colocar o incone certo
+        // leading: IconButton(onPressed: () {}, icon: const Icon(Icons.check)),        
       ),
       body: Center(
         child: Column(
@@ -45,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),
+              margin: const EdgeInsets.only(left: 20, right: 20, bottom: 40),
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -128,32 +124,40 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(),
+              padding: const EdgeInsets.only(bottom: 40),
               child: ElevatedButton(
-              onPressed: () => {},
-              autofocus: true,
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.green[600]),
-                padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(horizontal: 60, vertical: 10)),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                onPressed: () => {},
+                autofocus: true,
+                style: ButtonStyle(
+                  alignment: Alignment.center,
+                  backgroundColor: MaterialStateProperty.all(Colors.green[600]),
+                  padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(horizontal: 60, vertical: 10)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
-              ),
-              child: const SizedBox(
-                child: Text(
-                  "Histórico de endereços",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                child: const SizedBox(
+                  child: Text(
+                    "Histórico de endereços",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
+                ),                
               ),
             ),
+            const SizedBox(
+              child: Icon(
+                Icons.directions,
+                color: Colors.green,
+                size: 100,
+              ),
             ),
           ],
         ),
