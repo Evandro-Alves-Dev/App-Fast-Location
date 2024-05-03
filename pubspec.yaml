@@ -1,6 +1,6 @@
-name: location
+name: 'fast_location'
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -19,8 +19,9 @@ dependencies:
   path_provider: ^2.0.2
   path_provider_android: ^2.0.14
   path_provider_ios: ^2.0.9
-  map_launcher: ^2.2.1+1
-  geocoding: ^2.1.1  
+  map_launcher: ^3.3.0
+  geocoding: ^2.1.1 
+  http: ^0.13.3 
 
 dev_dependencies:
   flutter_test:
@@ -32,6 +33,3 @@ dev_dependencies:
 
 flutter:  
   uses-material-design: true  
-
-assets:
-  - assets/logo.png

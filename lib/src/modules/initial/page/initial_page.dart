@@ -1,6 +1,9 @@
+import 'dart:async';
+
+
+import 'package:fast_location/src/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:location/src/modules/page/home_page.dart';
 
 class ScreenInitial extends StatefulWidget {
   const ScreenInitial({super.key});
@@ -13,19 +16,18 @@ class _ScreenInitialState extends State<ScreenInitial> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    
-    //TODO: Verificar o tempo de loading se esta adequado
-
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => const HomePage(title: "Fast Location"),
-      ));
-    });
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);  
   }
+
+    void redirect(BuildContext context) {
+    Timer(const Duration(seconds: 3), () async {
+      Navigator.of(context).pushReplacementNamed(AppRouter.home);
+    });
+  }  
 
   @override
   Widget build(BuildContext context) {
+    redirect(context);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
