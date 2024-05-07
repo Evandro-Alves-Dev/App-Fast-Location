@@ -1,4 +1,6 @@
 import 'package:fast_location/src/modules/home/model/address_model.dart';
+import 'package:fast_location/src/modules/home/service/home_service.dart';
+import 'package:flutter/material.dart';
 //import 'package:fast_location/src/modules/home/service/home_service.dart';
 import 'package:mobx/mobx.dart';
 part 'history_controller.g.dart';
@@ -6,7 +8,7 @@ part 'history_controller.g.dart';
 class HistoryController = _HistoryController with _$HistoryController;
 
 abstract class _HistoryController with Store {
-  //final HomeService _service = HomeService();
+  final HomeService _service = HomeService();
 
   @observable
   bool isLoading = false;
@@ -15,12 +17,68 @@ abstract class _HistoryController with Store {
   bool hasAddress = false;
 
   @observable
+  bool hasError = false;
+
+  @observable
+  bool hasRouteError = false;
+
+  @observable
+  AddressModel? lastAddress;
+
+  @observable
   List<AddressModel> addressHistoryList = [];
 
   @action
   Future<void> loadData() async {
     isLoading = true;
-    //addressHistoryList = await _service.getAddressHistoryList();
+    addressHistoryList = await _service.getAddressHistoryList();
     isLoading = false;
+  }
+
+  @action
+  Future<void> getAddress(String cep) async {
+    try {
+      isLoading = true;
+      lastAddress = await _service.getAddress(cep);
+      await updateAddressRecent(lastAddress!);
+      await incrementAddressHistory(lastAddress!);
+      hasAddress = true;
+      isLoading = false;
+    } catch (ex) {
+      hasError = true;
+      isLoading = false;
+      debugPrint('HomeController.getAddress -> ${ex.toString()}');
+    }
+  }
+
+  @action
+  Future<void> updateAddressRecent(AddressModel address) async {
+    await _service.updateAddressRecentList(address);
+    // ignore: unused_local_variable
+    var addressRecentList = await _service.getAddressRecentList();
+  }
+
+  @action
+  Future<void> incrementAddressHistory(AddressModel address) async {
+    await _service.incrimentAddressHistoryList(address);
+  }
+
+  @action
+  Future<void> route(BuildContext context) async {
+    try {
+      isLoading = true;
+      if (lastAddress != null) {
+        await _service.openMap(context,
+            '${lastAddress?.publicPlace}, ${lastAddress?.neighborhood}');
+        isLoading = false;
+      } else {
+        hasRouteError = true;
+        isLoading = false;
+      }
+    } catch (ex) {
+      hasRouteError = true;
+      isLoading = false;
+      debugPrint('HomeController.route -> ${ex.toString()}');
+    }
   }
 }
