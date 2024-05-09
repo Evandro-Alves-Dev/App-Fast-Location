@@ -2,7 +2,7 @@
 
 App Fast Location
 
-## Descrition
+## Description
 
 Created App as a college project for quick location based on valid ZIP code query
 
