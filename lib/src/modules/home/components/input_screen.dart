@@ -111,7 +111,7 @@ class _InputScreenState extends State<InputScreen> {
                     );
                   },
                   child: _isLoading
-                      ? CircularProgressIndicator()
+                      ? const CircularProgressIndicator()
                       : const Text('Buscar'),
                 )),
             SizedBox(
@@ -121,7 +121,7 @@ class _InputScreenState extends State<InputScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HomePage(title: "Fast Location"),
+                      builder: (context) => const HomePage(title: "Fast Location"),
                     ),
                   ),
                 },
